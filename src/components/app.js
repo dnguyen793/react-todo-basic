@@ -20,6 +20,16 @@ class App extends Component {
         })
     }
 
+    deleteItem( index ){
+        console.log('index', index);
+        const newList = this.state.listArray.slice();
+        console.log('newList', newList)
+        newList.splice(index,1);
+        this.setState({
+            listArray: newList
+        });
+    }
+
     render(){
         return(
 
@@ -27,7 +37,7 @@ class App extends Component {
                 <div className="container">
                     <h1 className="center">To Do List</h1>
                     <AddForm add={this.addItem.bind(this)}/>
-                    <List list={this.state.listArray}/>
+                    <List list={this.state.listArray} delete = {this.deleteItem.bind(this)}/>
                 </div>
             </div>
         )
